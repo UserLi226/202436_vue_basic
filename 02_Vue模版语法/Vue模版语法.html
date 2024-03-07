@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue模版语法</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- 
+        Vue模版语法有2大类:
+            1.插值语法:
+                功能:用于解析标签体内容
+                写法:{{xxx}},xxx会做为表达式解析,且可以自动读取到data中的属性
+            2.指令语法:
+                功能:用于解析标签(包括:标签属性,标签内容,标签事件......)
+     -->
+    <div id="root">
+        <h2>插值语法</h2>
+        <h4>你好,{{msg}}</h4>
+        <h4>你好,{{msg.toUpperCase()}}</h4>
+        <hr/>
+        <h2>指令语法</h2>
+        <a v-bind:href="url">点我去学习</a>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el:'#root',
+            data:{
+                msg:'atguigu',
+                url:'http://www.baidu.com'
+            }    
+        })
+    </script>
+</body>
+</html>

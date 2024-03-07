@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>data_methods_computed总结</title>
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+
+    </div>
+    <script type="text/javascript">
+        const vm = new Vue({
+            el:'#root',//指定vm为那个容器服务
+            data:{ //驱动页面显示的数据都放在这里
+                x:100 //x最终会通过数据代理的方式放在vm身上
+            },
+            methods:{ //所有用到的函数都配置在这里
+                x(){ //y直接被放在vm身上
+                    console.log('y被调用了')
+                    return 200
+                }
+            },
+            computed:{
+                z:{ //z直接被放在vm身上
+                    set(value){ //z的值被修改时,set执行,set中的this是vm,set会收到修改的值
+
+                    },
+                    get(){//z的值被读取时,get执行,get中的this是vm
+
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

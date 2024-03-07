@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>date与el的两种写法</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        date与el的两种写法:
+            1.el的两种写法:
+                (1).new Vue时候直接传递el属性 ----- 常用
+                (2).先new Vue 再通过vm.$mount('root')指定el容器 ---- 不常用
+            2.data的两种写法:
+                (1).对象式:非组件编码时可以写对象,也可以写函数
+                (2).函数式:组件化编码必须使用函数式的data
+        Vue中的最重要的原则:
+            由Vue所管理的函数,都不要写成箭头函数
+     -->
+    <div id="root">
+        <h2>Hello, {{msg}}</h2>
+        <h2>地址是, {{address}}</h2>
+    </div>
+    <script type="text/javascript">
+        /*         //el第一种写法(常用)
+                new Vue({
+                    el:'#root',
+                    data:{
+                        msg:'尚硅谷',
+                        address:'宏福科技园综合楼'
+                    }    
+                }) 
+         */
+        /*         //el第二种写法(不常用)
+                const vm = new Vue({
+                    data:{
+                        msg:'尚硅谷',
+                        address:'宏福科技园综合楼'
+                    }    
+                }) 
+                vm.$mount('#root') */
+/*         //data的第一种写法, data是一个函数, 返回数据对象
+        new Vue({
+            data: {
+                msg: '尚硅谷',
+                address: '宏福科技园综合楼'
+            }
+        }) */
+        //date的第二种写法, data是一个函数, 返回数据对象(组件中用的多)
+        new Vue({
+            el: '#root',
+            data() { //特别注意:data不要写成箭头函数, 要写成普通函数,否则this的指向就是window了,而不是Vue的实例对象
+                console.log(this)
+                return {
+                    msg: '尚硅谷',
+                    address: '宏福科技园综合楼'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
